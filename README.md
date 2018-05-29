@@ -4,7 +4,7 @@
 
 # homeworks
 
-- [ ] 1: Python's ecosystem
+- [x] 1: Python's ecosystem
 - [ ] 2: Python
 - [ ] 3: Framework Django - part 1
 - [ ] 4: Framework Django - part 2
