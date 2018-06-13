@@ -6,7 +6,7 @@ from math import pi
 
 
 class Shape(object):
-    def __init__(self, *args):
+    def __init__(self):
         self.__name = None
         self.__line_color = 'black'
 
@@ -62,7 +62,7 @@ class BrokenLine(Shape):
 
 
 class FillableShape(Shape):
-    def __init__(self, *args):
+    def __init__(self):
         super().__init__()
         self.__fill_color = 'white'
 
