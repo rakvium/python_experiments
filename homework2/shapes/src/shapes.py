@@ -7,7 +7,8 @@ from math import pi
 
 class Shape(object):
     def __init__(self, *args):
-        'ok'
+        self.__name = None
+        self.__line_color = 'black'
 
     def type_name(self):
         return 'Shape'
@@ -35,18 +36,9 @@ class Shape(object):
         self.__line_color = new_line_color
 
 
-shape = Shape()
-print("Shape type: %s" % (shape.type_name()))
-print("Shape description: %s" % (shape.description()))
-print("Shape full desc: %s" % (shape.full_description()))
-shape.name = 'My first abstract shape'
-print("Shape name: %s" % (shape.name))
-shape.line_color = 'red'
-print("Shape line color: %s % (shape.line_color)")
-
-
 class StraightLine(Shape):
     def __init__(self, x, y):
+        super().__init__()
         self.x = x
         self.y = y
 
@@ -57,16 +49,9 @@ class StraightLine(Shape):
         return 'two dots connected by one straight line'
 
 
-shape = StraightLine([-1, -1], [1, 1])
-print("Shape type: %s" % (shape.type_name()))
-print("Shape description: %s" % (shape.description()))
-print("Shape full desc: %s" % (shape.full_description()))
-shape.line_color = 'orange'
-print("Shape line color: %s % (shape.line_color)")
-
-
 class BrokenLine(Shape):
     def __init__(self, dots):
+        super().__init__()
         self.dots = dots
 
     def type_name(self):
@@ -76,15 +61,11 @@ class BrokenLine(Shape):
         return 'multiple dots connected by straight lines'
 
 
-shape = BrokenLine([[1, 1], [3, 3], [3, 2], [2, 3], [3, 3]])
-print("Shape type: %s" % (shape.type_name()))
-print("Shape description: %s" % (shape.description()))
-print("Shape full desc: %s" % (shape.full_description()))
-shape.line_color = 'yellow'
-print("Shape line color: %s" % (shape.line_color))
-
-
 class FillableShape(Shape):
+    def __init__(self, *args):
+        super().__init__()
+        self.__fill_color = 'white'
+
     def type_name(self):
         return 'Abastract fillable shape'
 
@@ -100,18 +81,9 @@ class FillableShape(Shape):
         self.__fill_color = new_fill_color
 
 
-shape = FillableShape()
-print("Shape type: %s" % (shape.type_name()))
-print("Shape description: %s" % (shape.description()))
-print("Shape full desc: %s" % (shape.full_description()))
-shape.line_color = 'orange'
-print("Shape line color: %s" % (shape.line_color))
-shape.fill_color = 'yellow'
-print("Shape fill color: %s" % (shape.fill_color))
-
-
 class Circle(FillableShape):
     def __init__(self, center, radius):
+        super().__init__()
         self.center = center
         self.radius = radius
 
@@ -135,24 +107,9 @@ class Circle(FillableShape):
         return 'all the dots in a distance of radius from the center'
 
 
-shape = Circle([0, 0], 1)
-print("Shape type: %s" % (shape.type_name()))
-print("Shape description: %s" % (shape.description()))
-print("Shape full desc: %s" % (shape.full_description()))
-print("Shape radius: %s" % (shape.radius))
-print("Shape area: %s" % (shape.area()))
-shape.line_color = 'green'
-print("Shape line color: %s" % (shape.line_color))
-shape.fill_color = 'blue'
-print("Shape fill color: %s" % (shape.fill_color))
-try:
-    shape.radius = -1
-except Exception as e:
-    print('EXCEPTION:', e)
-
-
 class Rectangle(FillableShape):
     def __init__(self, x, y):
+        super().__init__()
         self.x = x
         self.y = y
 
@@ -163,11 +120,60 @@ class Rectangle(FillableShape):
         return 'defined by two dots on opposite sides of one diagonal'
 
 
-shape = Rectangle([-1, -1], [1, 1])
-print("Shape type: %s" % (shape.type_name()))
-print("Shape description: %s" % (shape.description()))
-print("Shape full desc: %s" % (shape.full_description()))
-shape.line_color = 'navy'
-print("Shape line color: %s" % (shape.line_color))
-shape.fill_color = 'purple'
-print("Shape fill color: %s" % (shape.fill_color))
+if __name__ == "__main__":
+    shape = Shape()
+    print("Shape type: %s" % (shape.type_name()))
+    print("Shape description: %s" % (shape.description()))
+    print("Shape full desc: %s" % (shape.full_description()))
+    print("Shape name: %s" % (shape.name))
+    shape.name = 'My first abstract shape'
+    print("Shape name: %s" % (shape.name))
+    shape.line_color = 'red'
+    print("Shape line color: %s" % (shape.line_color))
+    shape = StraightLine([-1, -1], [1, 1])
+    print("Shape type: %s" % (shape.type_name()))
+    print("Shape description: %s" % (shape.description()))
+    print("Shape full desc: %s" % (shape.full_description()))
+    print("Shape line color: %s" % (shape.line_color))
+    shape.line_color = 'orange'
+    print("Shape line color: %s" % (shape.line_color))
+    shape = BrokenLine([[1, 1], [3, 3], [3, 2], [2, 3], [3, 3]])
+    print("Shape type: %s" % (shape.type_name()))
+    print("Shape description: %s" % (shape.description()))
+    print("Shape full desc: %s" % (shape.full_description()))
+    shape.line_color = 'yellow'
+    print("Shape line color: %s" % (shape.line_color))
+    shape = FillableShape()
+    print("Shape type: %s" % (shape.type_name()))
+    print("Shape description: %s" % (shape.description()))
+    print("Shape full desc: %s" % (shape.full_description()))
+    print("Shape line color: %s" % (shape.line_color))
+    shape.line_color = 'orange'
+    print("Shape line color: %s" % (shape.line_color))
+    print("Shape fill color: %s" % (shape.fill_color))
+    shape.fill_color = 'yellow'
+    print("Shape fill color: %s" % (shape.fill_color))
+    shape = Circle([0, 0], 1)
+    print("Shape type: %s" % (shape.type_name()))
+    print("Shape description: %s" % (shape.description()))
+    print("Shape full desc: %s" % (shape.full_description()))
+    print("Shape radius: %s" % (shape.radius))
+    print("Shape area: %s" % (shape.area()))
+    shape.line_color = 'green'
+    print("Shape line color: %s" % (shape.line_color))
+    shape.fill_color = 'blue'
+    print("Shape fill color: %s" % (shape.fill_color))
+    try:
+        shape.radius = -1
+    except Exception as e:
+        print('EXCEPTION:', e)
+    shape = Rectangle([-1, -1], [1, 1])
+    print("Shape type: %s" % (shape.type_name()))
+    print("Shape description: %s" % (shape.description()))
+    print("Shape full desc: %s" % (shape.full_description()))
+    print("Shape line color: %s" % (shape.line_color))
+    shape.line_color = 'navy'
+    print("Shape line color: %s" % (shape.line_color))
+    print("Shape fill color: %s" % (shape.fill_color))
+    shape.fill_color = 'purple'
+    print("Shape fill color: %s" % (shape.fill_color))
