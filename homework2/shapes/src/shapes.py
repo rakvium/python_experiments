@@ -115,6 +115,16 @@ class Circle(FillableShape):
         self.center = center
         self.radius = radius
 
+    @property
+    def radius(self):
+        return self.__radius
+
+    @radius.setter
+    def radius(self, new_radius):
+        if new_radius <= 0:
+            raise Exception('Radius should be positive!')
+        self.__radius = new_radius
+
     def area(self):
         return pi*self.radius**2
 
@@ -129,11 +139,16 @@ shape = Circle([0, 0], 1)
 print("Shape type: %s" % (shape.type_name()))
 print("Shape description: %s" % (shape.description()))
 print("Shape full desc: %s" % (shape.full_description()))
+print("Shape radius: %s" % (shape.radius))
 print("Shape area: %s" % (shape.area()))
 shape.line_color = 'green'
 print("Shape line color: %s" % (shape.line_color))
 shape.fill_color = 'blue'
 print("Shape fill color: %s" % (shape.fill_color))
+try:
+    shape.radius = -1
+except Exception as e:
+    print('EXCEPTION:', e)
 
 
 class Rectangle(FillableShape):
@@ -148,7 +163,7 @@ class Rectangle(FillableShape):
         return 'defined by two dots on opposite sides of one diagonal'
 
 
-shape = Circle([-1, -1], [1, 1])
+shape = Rectangle([-1, -1], [1, 1])
 print("Shape type: %s" % (shape.type_name()))
 print("Shape description: %s" % (shape.description()))
 print("Shape full desc: %s" % (shape.full_description()))
