@@ -16,7 +16,7 @@ class Shape(object):
         return 'an abstract shape'
 
     def full_description(self):
-        return self.type_name() + ' - ' + self.description()
+        return f"{self.type_name()} - {self.description()}"
 
     @property
     def name(self):
