@@ -16,6 +16,5 @@ location = os.path.realpath(
 
 backup = open(location, 'w')
 
-dict_list = data
-for values in dict_list:
+for values in data:
     backup.write("".join(["%s=%s\n" % (k, str(v)) for k, v in values.items()]))
