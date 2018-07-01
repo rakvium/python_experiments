@@ -1,0 +1,9 @@
+{% if goods %}
+    <ul>
+    {% for good in goods %}
+        <li><a href="{% url 'front:detail' good.id %}">{{ good.name }}</a> - {{ good.price }} points</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No goods are available.</p>
+{% endif %}
