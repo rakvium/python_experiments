@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>{% block title %}Django Shop{% endblock title %}</title>
+    {% block meta %}{% endblock meta %}
+</head>
+<body>
+  <header>
+    <div>
+      {% if request.user.id == None %}
+      <a href="/accounts/login/">Login</a>
+      <hr/>
+      {% endif %}
+      {% block breadcrumbs %}
+      {% endblock breadcrumbs %}
+    </div>
+    <h1>{% block header %}{% endblock header %}</h1>
+  </header>
+  {% block content %}{% endblock content %}
+  <footer>
+    <hr>
+    No rights reserved. No services served.
+  </footer>
+</body>
+</html>

@@ -1,9 +1,17 @@
-{% if goods %}
+{% extends "base.html" %}
+{% block title %}Django Shop - Goods{% endblock title %}
+{% block header %}Our goods{% endblock header %}
+{% block content %}
+  {% if goods %}
     <ul>
     {% for good in goods %}
-        <li><a href="{% url 'front:detail' good.id %}">{{ good.name }}</a> - {{ good.price }} points</li>
+      <li>
+        <a href="{% url 'front:detail' good.id %}">{{ good.name }}</a>
+        - {{ good.price }} points
+      </li>
     {% endfor %}
     </ul>
-{% else %}
+  {% else %}
     <p>No goods are available.</p>
-{% endif %}
+  {% endif %}
+{% endblock content %}

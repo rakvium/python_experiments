@@ -20,6 +20,7 @@ from django.http import HttpResponse
 
 urlpatterns = [
     path('robots.txt', lambda request: HttpResponse()),
-    path('store/', include('front.urls')),
+    path('', include('front.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('registration.backends.default.urls')),
 ]

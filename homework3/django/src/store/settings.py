@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +41,17 @@ INSTALLED_APPS = [
     'front',
     'orders'
 ]
+
+# One-week activation window
+ACCOUNT_ACTIVATION_DAYS = 7
+
+# Automatically log the user in:
+REGISTRATION_AUTO_LOGIN = True
+
+# Display registration emails in console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
