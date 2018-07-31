@@ -3,3 +3,4 @@ django-registration-redux==2.4
 pycodestyle
 pylint
 pylint-django
+redis

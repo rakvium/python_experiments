@@ -1,0 +1,17 @@
+version: '3'
+services:
+  redis:
+    container_name: rak_redis
+    image: "redis:alpine"
+  web:
+    container_name: rak_web
+    build: .
+    ports:
+     - "8000:8000"
+    depends_on:
+      - redis
+  celery:
+    container_name: rak_celery
+    build: ./celery
+    depends_on:
+      - redis
